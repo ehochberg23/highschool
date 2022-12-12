@@ -80,13 +80,15 @@ def playerChoice(compBoard):
         A ! on the board if there is a ship in that spot
     """
 
-    r = int(input("Pick a row"))           #row
-    c = int(input("Pick a column"))       #column
-
-    if type(r) or type(c) is str:
-        print("Please enter numbers")
-        playerChoice(compBoard)
-
+    trying = True
+    while trying:
+        trying = False
+        try:
+            r = input("Pick a row")  # row
+            c = input("Pick a column")  # column
+        except:
+            print("Please enter a number")
+            trying = True
 
     if 0>r>4 or 0>c>4:
         print("Choose a valid number")
