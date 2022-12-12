@@ -58,12 +58,15 @@ def playerChoice(board):
         An X in the spot that the player chose
     """
 
-    r = input("Pick a row")  # row
-    c = input("Pick a column")  # column
-
-    if type(r) or type(c) is str:
-        print("Please enter numbers")
-        playerChoice(board)
+    trying = True
+    while trying:
+        trying = False
+        try:
+            r = input("Pick a row")  # row
+            c = input("Pick a column")  # column
+        except:
+            print("Please enter a number")
+            trying = True
 
     if 0 > c > 2 or 0 > r > 2:  # if number smaller than 0 or bigger than 2
         print("Please enter valid numbers")
