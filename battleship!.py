@@ -1,6 +1,6 @@
 """
 Name: Ellie Hochberg
-Date: Dec 16, 2022
+Date: Dec 15, 2022
 Description: Play a game of battleship with the computer
 Bugs: No bugs
 Plan:
@@ -80,18 +80,19 @@ def playerChoice(compBoard):
         A * on the board if there is no ship in that spot
         A ! on the board if there is a ship in that spot
     """
-
     trying = True
     while trying:
         trying = False
         try:
-            r = input("Pick a row")  # row
-            c = input("Pick a column")  # column
+            r = int(input("Pick a row"))          #row
+            c = int(input("Pick a column"))      #column
         except:
             print("Please enter a number")
             trying = True
 
-    if 0>r>4 or 0>c>4:
+
+
+    if r<0 or r>4 or c<0 or c>4:
         print("Choose a valid number")
         playerChoice(compBoard)
 
@@ -185,8 +186,7 @@ def main():
     """
 
     game = 0
-    playerScore = 0                 #player's initial score
-    compScore = 0                  #computer's initial score
+
 
     print("Let's play Battleship!")
 
@@ -220,7 +220,6 @@ def main():
             playerBoard = computerChoice(playerBoard)
             game = winGame(playerBoard, compBoard)
             changeBoard(playerBoard, game)
-            compScore
 
             turns -= 1
 
