@@ -1,6 +1,6 @@
 """
 Name: Ellie Hochberg
-Date: Dec 15, 2022
+Date: Dec 16, 2022
 Description: Play a game of battleship with the computer
 Bugs: No bugs
 Plan:
