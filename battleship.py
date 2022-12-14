@@ -6,13 +6,20 @@ Bugs: No bugs
 Plan:
     1)Generate a board for both the player and the computer with four randomly placed ships
     2)Ask the player where they want to shoot
-    3)Put a * if they didn't hit a ship and a ! if they did on the computer's board
+    3)Put a 📍 if they didn't hit a ship and a 💥 if they did on the computer's board
     4)Computer shoots a random spot
-    5)Put a * if they didn't hit a ship and a ! if they did on the player's board
+    5)Put a 📍 if they didn't hit a ship and a 💥 if they did on the player's board
     6)Repeat until there is a winner
 """
 import random
 from playsound import playsound
+import emoji
+
+SHIP = "🚢"
+BOOM = "💥"
+MISS = "📍"
+SPOT = "⬜"
+
 
 def startBoard(board):
     """
@@ -22,16 +29,16 @@ def startBoard(board):
     Returns:
         The board with the 4 ships
     """
-    i=0
-    while i < 4:                       #run loop 4 times
-        r = random.randint(0,4)          #random number from 0-4
-        c = random.randint(0,4)           #random number from 0-4
+    i = 0
+    while i < 4:  # run loop 4 times
+        r = random.randint(0, 4)  # random number from 0-4
+        c = random.randint(0, 4)  # random number from 0-4
 
-        if board[r][c] == "X":                    #if spot already chosen, try again
+        if board[r][c] == SHIP:  # if spot already chosen, try again
             continue
         else:
-            board[r][c]="X"                    #put an X in that spot
-            i+=1
+            board[r][c] = SHIP  # put an ship in that spot
+            i += 1
 
     return board
 
@@ -47,8 +54,9 @@ def printBoard(board):
 
     for r in board:
         for c in r:
-            print(c,end = "")
+            print(c, end="")
         print()
+
 
 def changeBoard(board, game):
     """
@@ -67,7 +75,7 @@ def changeBoard(board, game):
 
         for r in board:
             for c in r:
-                print(c,end = " ")
+                print(c, end=" ")
             print()
 
 
@@ -77,38 +85,37 @@ def playerChoice(compBoard):
     Arguments:
         compBoard: the computer's board
     Returns:
-        A * on the board if there is no ship in that spot
-        A ! on the board if there is a ship in that spot
+        A pin emoji on the board if there is no ship in that spot
+        An explosion emoji on the board if there is a ship in that spot
     """
     trying = True
     while trying:
         trying = False
         try:
-            r = int(input("Pick a row"))          #row
-            c = int(input("Pick a column"))      #column
+            r = int(input("Pick a row"))  # row
+            c = int(input("Pick a column"))  # column
         except:
             print("Please enter a number")
             trying = True
 
-
-
-    if r<0 or r>4 or c<0 or c>4:
+    if r < 0 or r >= 5 or c < 0 or c >= 5:        #if number greater or equal to 5 or less than 0
         print("Choose a valid number")
         playerChoice(compBoard)
 
-    elif (compBoard[r][c] == "X"):                         #if ship in that spot
-        compBoard[r][c] = "!"
+    elif (compBoard[r][c] == SHIP):  # if ship in that spot
+        compBoard[r][c] = BOOM
         print("You hit a ship!")
         playsound(r'G:\My Drive\Computer Science\CS2\Assignments\explosion.wav')
 
-    elif (compBoard[r][c] == "*") or (compBoard[r][c] == "!"):                  #if spot already taken
+    elif (compBoard[r][c] == MISS) or (compBoard[r][c] == BOOM):  # if spot already taken
         print("Spot already chosen. Choose again")
         playerChoice(compBoard)
 
     else:
-        compBoard[r][c] = "*"                        #put a * where the player chose
+        compBoard[r][c] = MISS  # put a pin emoji where the player chose
 
     return compBoard
+
 
 def computerChoice(playerBoard):
     """
@@ -116,22 +123,22 @@ def computerChoice(playerBoard):
     Arguments:
         playerBoard: the player's board
     Returns:
-        A * on the board if there is no ship in that spot
-        A ! on the board if there is a ship in that spot
+        A pin emoji on the board if there is no ship in that spot
+        An explosion emoji on the board if there is a ship in that spot
         """
 
-    r = random.randint(0,4)                         #random r from 0-2
-    c = random.randint(0,4)                          #random c from 0-2
+    r = random.randint(0, 4)  # random r from 0-2
+    c = random.randint(0, 4)  # random c from 0-2
 
-    if (playerBoard[r][c] == "X"):                     #if ship in that spot
-        playerBoard[r][c] = "!"
+    if (playerBoard[r][c] == SHIP):  # if ship in that spot
+        playerBoard[r][c] = BOOM
         print("Computer hit your ship")
         playsound(r'G:\My Drive\Computer Science\CS2\Assignments\explosion.wav')
 
-    elif (playerBoard[r][c] == "*") or (playerBoard[r][c] == "!"):                  #if spot already taken
+    elif (playerBoard[r][c] == MISS) or (playerBoard[r][c] == BOOM):  # if spot already taken
         playerChoice(playerBoard)
     else:
-        playerBoard[r][c] = "*"                                 #put an * in the spot chosen
+        playerBoard[r][c] = MISS         # put a pin emoji in the spot chosen
 
     return playerBoard
 
@@ -146,16 +153,17 @@ def winGame(playerBoard, compBoard):
         Determine if there's a winner
     """
 
-    if (playerBoard[0][0] != "X") and (playerBoard[0][1] != "X") and (playerBoard[0][2] != "X")and (playerBoard[0][3] != "X") and (playerBoard[0][4] != "X") and (playerBoard[1][0] != "X") and (playerBoard[1][1] != "X") and (playerBoard[1][2] != "X") and (playerBoard[1][3] != "X") and (playerBoard[1][4] != "X") and (playerBoard[2][0] != "X") and (playerBoard[2][1] != "X") and (playerBoard[2][2] != "X") and (playerBoard[2][3] != "X") and (playerBoard[2][4] != "X") and (playerBoard[3][0] != "X") and (playerBoard[3][1] != "X")and (playerBoard[3][2] != "X") and (playerBoard[3][3] != "X") and (playerBoard[3][4] != "X") and (playerBoard[4][0] != "X") and (playerBoard[4][1] != "X") and (playerBoard[4][2] != "X")and (playerBoard[4][3] != "X") and (playerBoard[4][4] != "X"):
-        print("Computer wins")       #if all the X's are hit on the player's board
+    if (playerBoard[0][0] != SHIP) and (playerBoard[0][1] != SHIP) and (playerBoard[0][2] != SHIP)and (playerBoard[0][3] != SHIP) and (playerBoard[0][4] != SHIP) and (playerBoard[1][0] != SHIP) and (playerBoard[1][1] != SHIP) and (playerBoard[1][2] != SHIP) and (playerBoard[1][3] != SHIP) and (playerBoard[1][4] != SHIP) and (playerBoard[2][0] != SHIP) and (playerBoard[2][1] != SHIP) and (playerBoard[2][2] != SHIP) and (playerBoard[2][3] != SHIP) and (playerBoard[2][4] != SHIP) and (playerBoard[3][0] != SHIP) and (playerBoard[3][1] != SHIP)and (playerBoard[3][2] != SHIP) and (playerBoard[3][3] != SHIP) and (playerBoard[3][4] != SHIP) and (playerBoard[4][0] != SHIP) and (playerBoard[4][1] != SHIP) and (playerBoard[4][2] != SHIP)and (playerBoard[4][3] != SHIP) and (playerBoard[4][4] != SHIP):
+        print("Computer wins")  # if all the SHIP's are hit on the player's board
         return 1
 
-    elif (compBoard[0][0] != "X") and (compBoard[0][1] != "X") and (compBoard[0][2] != "X") and (compBoard[0][3] != "X") and (compBoard[0][4] != "X") and (compBoard[1][0] != "X") and (compBoard[1][1] != "X") and (compBoard[1][2] != "X") and (compBoard[1][3] != "X") and (compBoard[1][4] != "X") and (compBoard[2][0] != "X") and (compBoard[2][1] != "X") and (compBoard[2][2] != "X") and (compBoard[2][3] != "X") and (compBoard[2][4] != "X") and (compBoard[3][0] != "X") and (compBoard[3][1] != "X")and (compBoard[3][2] != "X") and (compBoard[3][3] != "X") and (compBoard[3][4] != "X") and (compBoard[4][0] != "X") and (compBoard[4][1] != "X") and (compBoard[4][2] != "X")and (compBoard[4][3] != "X") and (compBoard[4][4] != "X"):
-        print("You win!")                #if all the X's are hit on the computer's board
+    elif (compBoard[0][0] != SHIP) and (compBoard[0][1] != SHIP) and (compBoard[0][2] != SHIP) and (compBoard[0][3] != SHIP) and (compBoard[0][4] != SHIP) and (compBoard[1][0] != SHIP) and (compBoard[1][1] != SHIP) and (compBoard[1][2] != SHIP) and (compBoard[1][3] != SHIP) and (compBoard[1][4] != SHIP) and (compBoard[2][0] != SHIP) and (compBoard[2][1] != SHIP) and (compBoard[2][2] != SHIP) and (compBoard[2][3] != SHIP) and (compBoard[2][4] != SHIP) and (compBoard[3][0] != SHIP) and (compBoard[3][1] != SHIP)and (compBoard[3][2] != SHIP) and (compBoard[3][3] != SHIP) and (compBoard[3][4] != SHIP) and (compBoard[4][0] != SHIP) and (compBoard[4][1] != SHIP) and (compBoard[4][2] != SHIP)and (compBoard[4][3] != SHIP) and (compBoard[4][4] != SHIP):
+        print("You win!")  # if all the SHIP's are hit on the computer's board
         return 1
 
     else:
         return 0
+
 
 def doneGame():
     """
@@ -167,9 +175,9 @@ def doneGame():
     """
     ask = input("Play again? 1 for yes, 2 for no")
 
-    if ask == 1:                  #play again
+    if ask == 1:  # play again
         main()
-    elif ask == 2:                 #don't play again
+    elif ask == 2:  # don't play again
         print("Okay, bye!")
     else:
         print("Invalid. Enter 1 for yes or 2 for no")
@@ -187,35 +195,33 @@ def main():
 
     game = 0
 
-
     print("Let's play Battleship!")
 
-    playerBoard = [["[]","[]","[]","[]","[]"],
-             ["[]","[]","[]","[]","[]"],
-             ["[]","[]","[]","[]","[]"],
-             ["[]","[]","[]","[]","[]"],
-             ["[]","[]","[]","[]","[]"]]
+    playerBoard = [[SPOT, SPOT, SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT, SPOT, SPOT]]
 
-    compBoard = [["[]","[]","[]","[]","[]"],
-             ["[]","[]","[]","[]","[]"],
-             ["[]","[]","[]","[]","[]"],
-             ["[]","[]","[]","[]","[]"],
-             ["[]","[]","[]","[]","[]"]]
-
+    compBoard = [[SPOT, SPOT, SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT, SPOT, SPOT]]
 
     playerBoard = startBoard(playerBoard)
     compBoard = startBoard(compBoard)
     printBoard(playerBoard)
-    #print("")
-    #printBoard(compBoard)
+    # print("")
+    # printBoard(compBoard)
 
     turns = 10
 
-    while turns > 0 :
+    while turns > 0:
         while game == 0:
             compBoard = playerChoice(compBoard)
             game = winGame(playerBoard, compBoard)
-            #changeBoard(compBoard, game)
+            # changeBoard(compBoard, game)
 
             playerBoard = computerChoice(playerBoard)
             game = winGame(playerBoard, compBoard)
@@ -223,7 +229,7 @@ def main():
 
             turns -= 1
 
-            print(turns,"turns left")
+            print(turns, "turns left")
 
 
 if __name__ == '__main__':
