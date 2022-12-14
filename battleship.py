@@ -113,6 +113,8 @@ def playerChoice(compBoard):
 
     else:
         compBoard[r][c] = MISS  # put a pin emoji where the player chose
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\splash.wav')
+        print("You did not hit a ship")
 
     return compBoard
 
@@ -139,6 +141,9 @@ def computerChoice(playerBoard):
         playerChoice(playerBoard)
     else:
         playerBoard[r][c] = MISS         # put a pin emoji in the spot chosen
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\splash.wav')
+        print("Computer did not hit a ship")
+
 
     return playerBoard
 
