@@ -195,7 +195,7 @@ def main():
 
     game = 0
 
-    print("Let's play Battleship!")
+    print("Let's play Battleship!\n")
 
     playerBoard = [[SPOT, SPOT, SPOT, SPOT, SPOT],
              [SPOT, SPOT, SPOT, SPOT, SPOT],
