@@ -155,10 +155,12 @@ def winGame(playerBoard, compBoard):
 
     if (playerBoard[0][0] != SHIP) and (playerBoard[0][1] != SHIP) and (playerBoard[0][2] != SHIP)and (playerBoard[0][3] != SHIP) and (playerBoard[0][4] != SHIP) and (playerBoard[1][0] != SHIP) and (playerBoard[1][1] != SHIP) and (playerBoard[1][2] != SHIP) and (playerBoard[1][3] != SHIP) and (playerBoard[1][4] != SHIP) and (playerBoard[2][0] != SHIP) and (playerBoard[2][1] != SHIP) and (playerBoard[2][2] != SHIP) and (playerBoard[2][3] != SHIP) and (playerBoard[2][4] != SHIP) and (playerBoard[3][0] != SHIP) and (playerBoard[3][1] != SHIP)and (playerBoard[3][2] != SHIP) and (playerBoard[3][3] != SHIP) and (playerBoard[3][4] != SHIP) and (playerBoard[4][0] != SHIP) and (playerBoard[4][1] != SHIP) and (playerBoard[4][2] != SHIP)and (playerBoard[4][3] != SHIP) and (playerBoard[4][4] != SHIP):
         print("Computer wins")  # if all the SHIP's are hit on the player's board
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\applause.wav')
         return 1
 
     elif (compBoard[0][0] != SHIP) and (compBoard[0][1] != SHIP) and (compBoard[0][2] != SHIP) and (compBoard[0][3] != SHIP) and (compBoard[0][4] != SHIP) and (compBoard[1][0] != SHIP) and (compBoard[1][1] != SHIP) and (compBoard[1][2] != SHIP) and (compBoard[1][3] != SHIP) and (compBoard[1][4] != SHIP) and (compBoard[2][0] != SHIP) and (compBoard[2][1] != SHIP) and (compBoard[2][2] != SHIP) and (compBoard[2][3] != SHIP) and (compBoard[2][4] != SHIP) and (compBoard[3][0] != SHIP) and (compBoard[3][1] != SHIP)and (compBoard[3][2] != SHIP) and (compBoard[3][3] != SHIP) and (compBoard[3][4] != SHIP) and (compBoard[4][0] != SHIP) and (compBoard[4][1] != SHIP) and (compBoard[4][2] != SHIP)and (compBoard[4][3] != SHIP) and (compBoard[4][4] != SHIP):
         print("You win!")  # if all the SHIP's are hit on the computer's board
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\applause.wav')
         return 1
 
     else:
