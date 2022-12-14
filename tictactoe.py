@@ -1,7 +1,7 @@
 """
 Name: Ellie Hochberg
 Date: November 30, 2022
-Description: Play a game of tic tac toe with computer
+Description: Play a game of Tic Tac Toe with computer
 Bugs: No bugs
 Plan:
     1) Show empty board
@@ -11,7 +11,11 @@ Plan:
 """
 
 import random
+import emoji
 
+SPOT = "⬜"
+X = "❌"
+O = "⭕"
 
 def printBoard(board):
     """
@@ -48,7 +52,6 @@ def changeBoard(board, game):
                 print(c, end=" ")
             print()
 
-
 def playerChoice(board):
     """
     The player's choice of where to put down an X
@@ -62,22 +65,22 @@ def playerChoice(board):
     while trying:
         trying = False
         try:
-            r = input("Pick a row")  # row
-            c = input("Pick a column")  # column
+            r = int(input("Pick a row"))  # row
+            c = int(input("Pick a column"))  # column
         except:
             print("Please enter a number")
             trying = True
 
-    if 0 > c > 2 or 0 > r > 2:  # if number smaller than 0 or bigger than 2
+    if c<0 or c>2 or r<0 or r>2:  # if number smaller than 0 or bigger than 2
         print("Please enter valid numbers")
         playerChoice(board)
 
 
-    elif (board[r][c] == "X") or (board[r][c] == "O"):  # if spot already taken
+    elif (board[r][c] == X) or (board[r][c] == O):  # if spot already taken
         print("Spot taken. Choose again")
         playerChoice(board)
     else:
-        board[r][c] = "X"  # put an X where the player chose
+        board[r][c] = X  # put an X where the player chose
 
     return board
 
@@ -94,10 +97,10 @@ def computerChoice(board):
     r = random.randint(0, 2)  # random r from 0-2
     c = random.randint(0, 2)  # random c from 0-2
 
-    if (board[r][c] == "X") or (board[r][c] == "O"):  # if spot already taken
+    if (board[r][c] == X) or (board[r][c] == O):  # if spot already taken
         computerChoice(board)
     else:
-        board[r][c] = "O"  # put an O in the spot chosen
+        board[r][c] = O  # put an O in the spot chosen
 
     return board
 
@@ -111,75 +114,73 @@ def winGame(board):
         end game if there's a winner
     """
 
-    if (board[0][0] == "X") and (board[0][1] == "X") and (board[0][2] == "X"):  # top across
-        changeBoard(board)
+    if (board[0][0] == X) and (board[0][1] == X) and (board[0][2] == X):  # top across
         print("You win!")
         return 1
 
-    elif (board[1][0] == "X") and (board[1][1] == "X") and (board[1][2] == "X"):  # middle across
-        changeBoard(board)
+    elif (board[1][0] == X) and (board[1][1] == X) and (board[1][2] == X):  # middle across
         print("You win!")
         return 1
 
-    elif (board[2][0] == "X") and (board[2][1] == "X") and (board[2][2] == "X"):  # bottom across
+    elif (board[2][0] == X) and (board[2][1] == X) and (board[2][2] == X):  # bottom across
         print("You win!")
         return 1
 
-    elif (board[0][0] == "X") and (board[1][1] == "X") and (board[2][2] == "X"):  # diagonal down
+    elif (board[0][0] == X) and (board[1][1] == X) and (board[2][2] == X):  # diagonal down
         print("You win!")
         return 1
 
-    elif board[0][0] == "X" and board[1][0] == "X" and board[2][0] == "X":  # left down
+    elif board[0][0] == X and board[1][0] == X and board[2][0] == X:  # left down
         print("You win!")
         return 1
 
-    elif board[0][1] == "X" and board[1][1] == "X" and board[2][1] == "X":  # middle down
+    elif board[0][1] == X and board[1][1] == X and board[2][1] == X:  # middle down
         print("You win!")
         return 1
 
-    elif board[0][2] == "X" and board[1][2] == "X" and board[2][2] == "X":  # right down
+    elif board[0][2] == X and board[1][2] == X and board[2][2] == X:  # right down
         print("You win!")
         return 1
 
-    elif board[2][0] == "X" and board[1][1] == "X" and board[0][2] == "X":  # diagonal up
+    elif board[2][0] == X and board[1][1] == X and board[0][2] == X:  # diagonal up
         print("You win")
         return 1
 
-    elif (board[0][0] == "O") and (board[0][1] == "O") and (board[0][2] == "O"):  # top across
+    elif (board[0][0] == O) and (board[0][1] == O) and (board[0][2] == O):  # top across
         print("Computer wins!")
         return 1
 
-    elif (board[1][0] == "O") and (board[1][1] == "O") and (board[1][2] == "O"):  # middle across
+    elif (board[1][0] == O) and (board[1][1] == O) and (board[1][2] == O):  # middle across
         print("Computer wins!")
         return 1
 
-    elif (board[2][0] == "O") and (board[2][1] == "O") and (board[2][2] == "O"):  # bottom across
+    elif (board[2][0] == O) and (board[2][1] == O) and (board[2][2] == O):  # bottom across
         print("computer wins!")
         return 1
 
-    elif (board[0][0] == "O") and (board[1][1] == "O") and (board[2][2] == "O"):  # diagonal down
+    elif (board[0][0] == O) and (board[1][1] == O) and (board[2][2] == O):  # diagonal down
         print("Computer wins!")
         return 1
 
-    elif board[0][0] == "O" and board[1][0] == "O" and board[2][0] == "O":  # left down
+    elif board[0][0] == O and board[1][0] == O and board[2][0] == O:  # left down
         print("Computer wins!")
         return 1
 
-    elif board[0][1] == "O" and board[1][1] == "O" and board[2][1] == "O":  # middle down
+    elif board[0][1] == O and board[1][1] == O and board[2][1] == O:  # middle down
         print("Computer wins!")
         return 1
 
-    elif board[0][2] == "O" and board[1][2] == "O" and board[2][2] == "O":  # right down
+    elif board[0][2] == O and board[1][2] == O and board[2][2] == O:  # right down
         print("Computer wins!")
         return 1
 
-    elif board[2][0] == "O" and board[1][1] == "O" and board[0][2] == "O":  # diagonal up
+    elif board[2][0] == O and board[1][1] == O and board[0][2] == O:  # diagonal up
         print("Computer wins!")
         return 1
 
-    elif (board[0][0] != "#") and (board[0][1] != "#") and (board[0][2]) != "#" and (board[1][0] != "#") and (
-            board[1][1] != "#") and (board[1][2] != "#") and (board[2][0] != "#") and (board[2][1] != "#") and (
-            board[2][2] != "#"):
+    elif (board[0][0] != SPOT) and (board[0][1] != SPOT) and (board[0][2]) != SPOT and (board[1][0] != SPOT) and (
+            board[1][1] != SPOT) and (board[1][2] != SPOT) and (board[2][0] != SPOT) and (board[2][1] != SPOT) and (
+            board[2][2] != SPOT):
         print("Tie!")  # conditions to have a tie
         return 1
 
@@ -195,7 +196,14 @@ def doneGame():
     Returns:
         game over or new game
     """
-    ask = input("Play again? 1 for yes, 2 for no")
+    going = True
+    while going:
+        going = False
+        try:
+            ask = int(input("Play again? 1 for yes, 2 for no"))
+        except:
+            print("Please enter 1 or 2")
+            going = True
 
     if ask == 1:  # play again
         main()
@@ -208,7 +216,7 @@ def doneGame():
 
 def main():
     """
-    Play a game of tic tac toe
+    Play a game of Tic Tac Toe
     Arguments:
         N/A
     Returns:
@@ -216,12 +224,12 @@ def main():
     """
     game = 0
 
-    print("let's play Tic Tac Toe!")
+    print("Let's play Tic Tac Toe!")
     print("You're X, Computer is O")
 
-    board = [["#", "#", "#"],
-             ["#", "#", "#"],
-             ["#", "#", "#"]]
+    board = [[SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT],
+             [SPOT, SPOT, SPOT]]
 
     printBoard(board)
 

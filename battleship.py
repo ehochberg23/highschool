@@ -98,7 +98,7 @@ def playerChoice(compBoard):
             print("Please enter a number")
             trying = True
 
-    if r < 0 or r >= 5 or c < 0 or c >= 5:        #if number greater or equal to 5 or less than 0
+    if r < 0 or r > 4 or c < 0 or c > 4:        #if number greater than 4 or less than 0
         print("Choose a valid number")
         playerChoice(compBoard)
 
@@ -180,7 +180,14 @@ def doneGame():
     Returns:
         game over or new game
     """
-    ask = input("Play again? 1 for yes, 2 for no")
+    going = True
+    while going:
+        going = False
+        try:
+            ask = int(input("Play again? 1 for yes, 2 for no"))
+        except:
+            print("Please enter 1 or 2")
+            going = True
 
     if ask == 1:  # play again
         main()
