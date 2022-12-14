@@ -12,6 +12,7 @@ Plan:
     6)Repeat until there is a winner
 """
 import random
+from playsound import playsound
 
 def startBoard(board):
     """
@@ -97,6 +98,7 @@ def playerChoice(compBoard):
     elif (compBoard[r][c] == "X"):                         #if ship in that spot
         compBoard[r][c] = "!"
         print("You hit a ship!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\explosion.wav')
 
     elif (compBoard[r][c] == "*") or (compBoard[r][c] == "!"):                  #if spot already taken
         print("Spot already chosen. Choose again")
@@ -123,6 +125,7 @@ def computerChoice(playerBoard):
     if (playerBoard[r][c] == "X"):                     #if ship in that spot
         playerBoard[r][c] = "!"
         print("Computer hit your ship")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\explosion.wav')
 
     elif (playerBoard[r][c] == "*") or (playerBoard[r][c] == "!"):                  #if spot already taken
         playerChoice(playerBoard)
