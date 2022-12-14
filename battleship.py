@@ -104,8 +104,9 @@ def playerChoice(compBoard):
 
     elif (compBoard[r][c] == SHIP):  # if ship in that spot
         compBoard[r][c] = BOOM
-        print("You hit a ship!")
         playsound(r'G:\My Drive\Computer Science\CS2\Assignments\explosion.wav')
+        print("You hit a ship!")
+
 
     elif (compBoard[r][c] == MISS) or (compBoard[r][c] == BOOM):  # if spot already taken
         print("Spot already chosen. Choose again")
@@ -134,8 +135,8 @@ def computerChoice(playerBoard):
 
     if (playerBoard[r][c] == SHIP):  # if ship in that spot
         playerBoard[r][c] = BOOM
-        print("Computer hit your ship")
         playsound(r'G:\My Drive\Computer Science\CS2\Assignments\explosion.wav')
+        print("Computer hit your ship")
 
     elif (playerBoard[r][c] == MISS) or (playerBoard[r][c] == BOOM):  # if spot already taken
         playerChoice(playerBoard)
