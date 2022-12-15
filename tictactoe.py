@@ -121,14 +121,17 @@ def winGame(board):
 
     if (board[0][0] == X) and (board[0][1] == X) and (board[0][2] == X):  # top across
         print("You win!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif (board[1][0] == X) and (board[1][1] == X) and (board[1][2] == X):  # middle across
         print("You win!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif (board[2][0] == X) and (board[2][1] == X) and (board[2][2] == X):  # bottom across
         print("You win!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif (board[0][0] == X) and (board[1][1] == X) and (board[2][2] == X):  # diagonal down
@@ -137,56 +140,69 @@ def winGame(board):
 
     elif board[0][0] == X and board[1][0] == X and board[2][0] == X:  # left down
         print("You win!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif board[0][1] == X and board[1][1] == X and board[2][1] == X:  # middle down
         print("You win!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif board[0][2] == X and board[1][2] == X and board[2][2] == X:  # right down
         print("You win!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif board[2][0] == X and board[1][1] == X and board[0][2] == X:  # diagonal up
         print("You win")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif (board[0][0] == O) and (board[0][1] == O) and (board[0][2] == O):  # top across
         print("Computer wins!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif (board[1][0] == O) and (board[1][1] == O) and (board[1][2] == O):  # middle across
         print("Computer wins!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif (board[2][0] == O) and (board[2][1] == O) and (board[2][2] == O):  # bottom across
         print("computer wins!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif (board[0][0] == O) and (board[1][1] == O) and (board[2][2] == O):  # diagonal down
         print("Computer wins!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif board[0][0] == O and board[1][0] == O and board[2][0] == O:  # left down
         print("Computer wins!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif board[0][1] == O and board[1][1] == O and board[2][1] == O:  # middle down
         print("Computer wins!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif board[0][2] == O and board[1][2] == O and board[2][2] == O:  # right down
         print("Computer wins!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif board[2][0] == O and board[1][1] == O and board[0][2] == O:  # diagonal up
         print("Computer wins!")
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     elif (board[0][0] != SPOT) and (board[0][1] != SPOT) and (board[0][2]) != SPOT and (board[1][0] != SPOT) and (
             board[1][1] != SPOT) and (board[1][2] != SPOT) and (board[2][0] != SPOT) and (board[2][1] != SPOT) and (
             board[2][2] != SPOT):
         print("Tie!")  # conditions to have a tie
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\cheering.wav')
         return 1
 
     else:
