@@ -1,6 +1,6 @@
 """
 Name: Ellie Hochberg
-Date: November 30, 2022
+Date: December 16, 2022
 Description: Play a game of Tic Tac Toe with computer
 Bugs: No bugs
 Plan:
@@ -12,6 +12,7 @@ Plan:
 
 import random
 import emoji
+from playsound import playsound
 
 SPOT = "⬜"
 X = "❌"
@@ -43,6 +44,8 @@ def changeBoard(board, game):
     """
     if game == 1:
         doneGame()
+
+
 
     else:
         print('')
@@ -81,6 +84,7 @@ def playerChoice(board):
         playerChoice(board)
     else:
         board[r][c] = X  # put an X where the player chose
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\pop.wav')
 
     return board
 
@@ -101,6 +105,7 @@ def computerChoice(board):
         computerChoice(board)
     else:
         board[r][c] = O  # put an O in the spot chosen
+        playsound(r'G:\My Drive\Computer Science\CS2\Assignments\pop.wav')
 
     return board
 
@@ -209,6 +214,7 @@ def doneGame():
         main()
     elif ask == 2:  # don't play again
         print("Okay, bye!")
+        exit()
     else:
         print("Invalid. Enter 1 for yes or 2 for no")
         doneGame()
