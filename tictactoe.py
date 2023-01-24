@@ -109,7 +109,6 @@ def computerChoice(board):
 
     return board
 
-
 def winGame(board):
     """
     Conditions to win the game
@@ -248,6 +247,7 @@ def main():
 
     print("Let's play Tic Tac Toe!")
     print("You're X, Computer is O")
+    print("Rows and columns are labelled 0,1,2")
 
     board = [[SPOT, SPOT, SPOT],
              [SPOT, SPOT, SPOT],
