@@ -38,8 +38,8 @@ def numTransform(n,p):
             finalList.append(abs(new) % 10)
             counter=counter-1
         for iteam in finalList:
-            final_str= final_str +str(iteam)
-    return final_str
+            finalStr= finalStr +str(iteam)
+    return finalStr
 
 
 
