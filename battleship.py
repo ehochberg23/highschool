@@ -231,21 +231,20 @@ def main():
     # print("")
     # printBoard(compBoard)
 
-    turns = 10
 
-    while turns > 0:
-        while game == 0:
-            compBoard = playerChoice(compBoard)
-            game = winGame(playerBoard, compBoard)
-            # changeBoard(compBoard, game)
 
-            playerBoard = computerChoice(playerBoard)
-            game = winGame(playerBoard, compBoard)
-            changeBoard(playerBoard, game)
 
-            turns -= 1
+    while game == 0:
+        compBoard = playerChoice(compBoard)
+        game = winGame(playerBoard, compBoard)
+        # changeBoard(compBoard, game)
 
-            print(turns, "turns left")
+        playerBoard = computerChoice(playerBoard)
+        game = winGame(playerBoard, compBoard)
+        changeBoard(playerBoard, game)
+
+
+
 
 
 if __name__ == '__main__':
