@@ -130,8 +130,8 @@ def computerChoice(playerBoard):
         An explosion emoji on the board if there is a ship in that spot
         """
 
-    r = random.randint(0, 4)  # random r from 0-2
-    c = random.randint(0, 4)  # random c from 0-2
+    r = random.randint(0, 4)  # random r from 0-4
+    c = random.randint(0, 4)  # random c from 0-4
 
     if (playerBoard[r][c] == SHIP):  # if ship in that spot
         playerBoard[r][c] = BOOM
